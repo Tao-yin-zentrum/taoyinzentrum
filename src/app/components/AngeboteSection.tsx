@@ -74,36 +74,6 @@ const cards: PricingCard[] = [
   },
 ];
 
-interface AngeboteSectionProps {
-  content?: {
-    angebote_title?: string;
-    angebote_cards?: any[];
-  };
-}
-
-export function AngeboteSection({ content }: AngeboteSectionProps) {
-  const smallCards = cards.filter((c) => !c.wide);
-  const wideCard = cards.find((c) => c.wide);
-
-  return (
-    <section id="Angebote" className="w-full py-16 lg:py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-6">
-        <h2 className="mb-10">Meine Angebote für dich</h2>
-
-        {/* 3 small cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {smallCards.map((card) => (
-            <SmallCard key={card.title} card={card} />
-          ))}
-        </div>
-
-        {/* Wide card */}
-        {wideCard && <WideCard card={wideCard} />}
-      </div>
-    </section>
-  );
-}
-
 function SmallCard({ card }: { card: PricingCard }) {
   return (
     <div className="flex flex-col">
@@ -203,5 +173,28 @@ function WideCard({ card }: { card: PricingCard }) {
         ))}
       </div>
     </div>
+  );
+}
+
+export function AngeboteSection() {
+  const smallCards = cards.filter((c) => !c.wide);
+  const wideCard = cards.find((c) => c.wide);
+
+  return (
+    <section id="Angebote" className="w-full py-16 lg:py-24 bg-background">
+      <div className="max-w-7xl mx-auto px-6">
+        <h2 className="mb-10">Meine Angebote für dich</h2>
+
+        {/* 3 small cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          {smallCards.map((card) => (
+            <SmallCard key={card.title} card={card} />
+          ))}
+        </div>
+
+        {/* Wide card */}
+        {wideCard && <WideCard card={wideCard} />}
+      </div>
+    </section>
   );
 }

@@ -1,4 +1,4 @@
-const defaultTestimonials = [
+const testimonials = [
   {
     name: "D.L.",
     text: "Als ich Anfang des Jahres zu Estela kam, war ich am Ende meiner seelischen und körperlichen Kräfte. Ich suchte überall um Rat oder Antworten. Jedoch ohne Erfolg. Eine psychosomatische Belastungsstörung wurde bei mir diagnostiziert. Dann... Zu meinem Glück, traf ich auf Estelas Taoyin Zentrum. Dank ihrer Erfahrung, ihres Know-Hows, ihrer Menschenkenntnis, ihres ganzen Wesens, hat sich mich aus meinem Loch wieder rausgeholt. Ich bin so dankbar Estela gefunden zu haben.",
@@ -13,23 +13,7 @@ const defaultTestimonials = [
   },
 ];
 
-interface TestimonialsSectionProps {
-  content?: {
-    testimonials_eyebrow?: string;
-    testimonials_title?: string;
-    testimonials_subtitle?: string;
-    testimonials_items?: Array<{
-      _uid: string;
-      text: string;
-      author: string;
-      rating: number;
-    }>;
-  };
-}
-
-export function TestimonialsSection({ content }: TestimonialsSectionProps) {
-  const testimonials = content?.testimonials_items || defaultTestimonials;
-  
+export function TestimonialsSection() {
   return (
     <section className="w-full py-16 lg:py-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">

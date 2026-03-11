@@ -1,25 +1,15 @@
-import { storyblokInit, apiPlugin, getStoryblokApi } from "@storyblok/react";
-
-// Debug: Check if token is loaded
-const accessToken = import.meta.env.VITE_STORYBLOK_ACCESS_TOKEN;
-if (!accessToken) {
-  console.error("❌ VITE_STORYBLOK_ACCESS_TOKEN is not set!");
-  console.error("Please add it to your Vercel Environment Variables and redeploy.");
-} else {
-  console.log("✅ Storyblok token loaded:", accessToken.substring(0, 10) + "...");
-}
+import { storyblokInit, apiPlugin } from "@storyblok/react";
 
 // Initialize Storyblok
-storyblokInit({
-  accessToken: accessToken,
+const { storyblokApi } = storyblokInit({
+  accessToken: import.meta.env.VITE_STORYBLOK_ACCESS_TOKEN,
   use: [apiPlugin],
   apiOptions: {
     region: "eu", // or "us", depending on your space
   },
 });
 
-// Get the API instance after initialization
-export const storyblokApi = getStoryblokApi();
+export { storyblokApi };
 
 // Language paths for our custom multi-language setup
 export const LANGUAGES = ["de", "en", "es"] as const;
@@ -42,7 +32,6 @@ export function getStorySlug(page: string, lang?: Language): string {
 export async function fetchStory(slug: string) {
   if (!storyblokApi) {
     console.warn("Storyblok API not initialized - using fallback data");
-    console.warn("Check if VITE_STORYBLOK_ACCESS_TOKEN is set in environment variables");
     return null;
   }
 
