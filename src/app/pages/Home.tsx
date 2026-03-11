@@ -31,21 +31,21 @@ export default function Home() {
   return (
     <>
       <SEO 
-        title="Taoyin Zentrum Ingolstadt – Heilung, Balance & Energie"
-        description="Dein Zentrum für Qi Gong, Tao Yin, Chi Nei Tsang & Psychotherapie in Ingolstadt. Für mehr innere Ruhe, Vitalität und Lebensbalance."
-        keywords="Qi Gong Ingolstadt, Tao Yin, Chi Nei Tsang, Psychotherapie Ingolstadt, Taoistische Praxis"
+        title={content?.seo_title || "Taoyin Zentrum Ingolstadt – Heilung, Balance & Energie"}
+        description={content?.seo_description || "Dein Zentrum für Qi Gong, Tao Yin, Chi Nei Tsang & Psychotherapie in Ingolstadt. Für mehr innere Ruhe, Vitalität und Lebensbalance."}
+        keywords={content?.seo_keywords || "Qi Gong Ingolstadt, Tao Yin, Chi Nei Tsang, Psychotherapie Ingolstadt, Taoistische Praxis"}
         url="/"
         {...(story ? extractSEOFromStory(story) : {})}
       />
-      <Hero />
-      <DetailsSections />
-      <AngeboteSection />
-      <PersoenlichesAngebot />
-      <PsychotherapieSection />
+      <Hero content={content} />
+      <DetailsSections content={content} />
+      <AngeboteSection content={content} />
+      <PersoenlichesAngebot content={content} />
+      <PsychotherapieSection content={content} />
       <NewsSection />
-      <FaqSection />
-      <TestimonialsSection />
-      <CtaSection />
+      <FaqSection content={content} />
+      <TestimonialsSection content={content} />
+      <CtaSection content={content} />
     </>
   );
 }

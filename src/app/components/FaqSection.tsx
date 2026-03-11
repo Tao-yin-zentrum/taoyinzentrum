@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
-const faqs = [
+const fallbackFaqs = [
   {
     question: "Was ist Tao Yin und wie wirkt es?",
     answer:
@@ -24,24 +24,40 @@ const faqs = [
   },
 ];
 
-export function FaqSection() {
+interface FaqSectionProps {
+  content?: {
+    faq_title?: string;
+    faq_subtitle?: string;
+    faq_items?: Array<{
+      _uid: string;
+      question: string;
+      answer: string;
+    }>;
+  };
+}
+
+export function FaqSection({ content }: FaqSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  
+  // Use Storyblok content if available, otherwise fallback
+  const title = content?.faq_title || "Raum für Achtsamkeit & Balance";
+  const subtitle = content?.faq_subtitle || "Antworten auf häufige Fragen zu unseren taoistischen Angeboten, Methoden und deinem Weg zu mehr Wohlbefinden.";
+  const faqs = content?.faq_items || fallbackFaqs;
 
   return (
     <section className="w-full py-16 lg:py-24 bg-primary">
       <div className="max-w-3xl mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-white mb-4">
-            Raum für Achtsamkeit & Balance
+            {title}
           </h2>
           <p className="text-white/60 text-[16px]">
-            Antworten auf häufige Fragen zu unseren taoistischen Angeboten,
-            Methoden und deinem Weg zu mehr Wohlbefinden.
+            {subtitle}
           </p>
         </div>
         <div className="space-y-0">
           {faqs.map((faq, i) => (
-            <div key={i} className="border-b border-white/10">
+            <div key={faq._uid || i} className="border-b border-white/10">
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 className="w-full flex items-center justify-between py-5 text-left group"
