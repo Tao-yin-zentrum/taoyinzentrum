@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router";
-import logoImg from "figma:asset/cb894aad3f8e389d141f6242645a5262ca05f077.png";
+
+// Logo placeholder - replace with your actual logo
+const logoImg = "https://via.placeholder.com/200x60/037baf/ffffff?text=Taoyin+Zentrum";
 
 const angeboteItems = [
   {

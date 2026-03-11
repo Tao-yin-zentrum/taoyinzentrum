@@ -1,5 +1,6 @@
-import heroShelf from "figma:asset/0b44a6989c85790a02b403be222b18bfbe95cb99.png";
-import heroPortrait from "figma:asset/1dc6dabf644da1ee4098759eed6eb50a895087b4.png";
+// Real image URLs from CDN
+const heroShelf = "https://cdn.prod.website-files.com/6890d61524a7dba397203fde/68c5371146ec6241e81774b7_Estela-byaylin-52-min.jpg";
+const heroPortrait = "https://cdn.prod.website-files.com/6890d61524a7dba397203fde/68c5370f3e66ed943079d4c6_Estela-byaylin-26-min.jpg";
 
 export function Hero() {
   return (
