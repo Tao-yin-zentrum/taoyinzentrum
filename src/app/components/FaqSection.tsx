@@ -41,7 +41,7 @@ export function FaqSection({ content }: FaqSectionProps) {
   
   const title = content?.faq_title || "Raum für Achtsamkeit & Balance";
   const subtitle = content?.faq_subtitle || "Antworten auf häufige Fragen zu unseren taoistischen Angeboten, Methoden und deinem Weg zu mehr Wohlbefinden.";
-  const faqs = content?.faq_items || fallbackFaqs;
+  const faqs = Array.isArray(content?.faq_items) ? content.faq_items : fallbackFaqs;
 
   return (
     <section className="w-full bg-[var(--wf-neutral-secondary)] py-[var(--section-padding-mobile-p)] md:py-[var(--section-padding-tablet)] lg:py-[var(--section-padding)]">

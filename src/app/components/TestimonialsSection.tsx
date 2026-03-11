@@ -28,7 +28,7 @@ interface TestimonialsSectionProps {
 }
 
 export function TestimonialsSection({ content }: TestimonialsSectionProps) {
-  const testimonials = content?.testimonials_items || defaultTestimonials;
+  const testimonials = Array.isArray(content?.testimonials_items) ? content.testimonials_items : defaultTestimonials;
   
   return (
     <section className="w-full bg-background py-[var(--section-padding-mobile-p)] md:py-[var(--section-padding-tablet)] lg:py-[var(--section-padding)]">

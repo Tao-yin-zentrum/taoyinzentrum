@@ -108,7 +108,7 @@ interface DetailsSectionsProps {
 
 export function DetailsSections({ content }: DetailsSectionsProps) {
   // Map Storyblok content to ContentSection format
-  const sections = content?.details_sections?.map(section => ({
+  const sections = (Array.isArray(content?.details_sections) ? content.details_sections.map(section => ({
     eyebrow: section.eyebrow || "",
     heading: section.title,
     paragraph: section.description,
@@ -125,7 +125,7 @@ export function DetailsSections({ content }: DetailsSectionsProps) {
     imageSrc: section.image?.filename || "",
     imageAlt: section.image?.alt || section.title,
     imageLeft: section.image_left || false,
-  })) || fallbackSections;
+  })) : null) || fallbackSections;
 
   return (
     <section id="Details" className="w-full bg-background py-[var(--section-padding-mobile-p)] md:py-[var(--section-padding-tablet)] lg:py-[var(--section-padding)]">

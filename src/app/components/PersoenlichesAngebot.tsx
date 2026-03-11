@@ -16,10 +16,13 @@ interface PersoenlichesAngebotProps {
 }
 
 export function PersoenlichesAngebot({ content }: PersoenlichesAngebotProps) {
-  // Extract text from features if they're objects from Storyblok
-  const features = (content?.personal_features || items).map(f => 
-    typeof f === 'string' ? f : f.text
-  );
+  // Extract text from features if they're objects from Storyblok, or parse flat string
+  const rawFeatures = content?.personal_features;
+  const features = Array.isArray(rawFeatures)
+    ? rawFeatures.map(f => typeof f === 'string' ? f : f.text)
+    : typeof rawFeatures === 'string'
+      ? rawFeatures.split('\n').filter(Boolean)
+      : items;
   
   return (
     <section className="w-full bg-[var(--wf-neutral-primary)] py-[var(--section-padding-mobile-p)] md:py-[var(--section-padding-tablet)] lg:py-[var(--section-padding)]">
