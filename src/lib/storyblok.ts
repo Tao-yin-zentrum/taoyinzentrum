@@ -31,7 +31,8 @@ export function getStorySlug(page: string, lang?: Language): string {
 // Fetch a story by slug
 export async function fetchStory(slug: string) {
   if (!storyblokApi) {
-    throw new Error("Storyblok API not initialized");
+    console.warn("Storyblok API not initialized - using fallback data");
+    return null;
   }
 
   try {
@@ -41,14 +42,15 @@ export async function fetchStory(slug: string) {
     return data.story;
   } catch (error) {
     console.error(`Error fetching story ${slug}:`, error);
-    throw error;
+    return null;
   }
 }
 
 // Fetch global data (navbar, footer, etc.)
 export async function fetchGlobalData(lang: Language = "de") {
   if (!storyblokApi) {
-    throw new Error("Storyblok API not initialized");
+    console.warn("Storyblok API not initialized - using fallback data");
+    return null;
   }
 
   try {
@@ -58,6 +60,6 @@ export async function fetchGlobalData(lang: Language = "de") {
     return data.story;
   } catch (error) {
     console.error(`Error fetching global data for ${lang}:`, error);
-    throw error;
+    return null;
   }
 }
