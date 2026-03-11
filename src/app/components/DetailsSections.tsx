@@ -1,6 +1,6 @@
 import { ContentSection } from "./ContentSection";
 
-const sections = [
+const fallbackSections = [
   {
     eyebrow: "Ganzheitlich. Achtsam. Verbunden.",
     heading: "Tao Basis",
@@ -89,7 +89,44 @@ const sections = [
   },
 ];
 
-export function DetailsSections() {
+interface DetailsSectionsProps {
+  content?: {
+    details_sections?: Array<{
+      _uid: string;
+      eyebrow?: string;
+      title: string;
+      description: string;
+      image?: { filename: string; alt?: string };
+      button_text_1?: string;
+      button_link_1?: { cached_url?: string };
+      button_text_2?: string;
+      button_link_2?: { cached_url?: string };
+      image_left?: boolean;
+    }>;
+  };
+}
+
+export function DetailsSections({ content }: DetailsSectionsProps) {
+  // Map Storyblok content to ContentSection format
+  const sections = content?.details_sections?.map(section => ({
+    eyebrow: section.eyebrow || "",
+    heading: section.title,
+    paragraph: section.description,
+    links: [
+      ...(section.button_text_1 ? [{ 
+        label: section.button_text_1, 
+        href: section.button_link_1?.cached_url || "#" 
+      }] : []),
+      ...(section.button_text_2 ? [{ 
+        label: section.button_text_2, 
+        href: section.button_link_2?.cached_url || "#" 
+      }] : []),
+    ],
+    imageSrc: section.image?.filename || "",
+    imageAlt: section.image?.alt || section.title,
+    imageLeft: section.image_left || false,
+  })) || fallbackSections;
+
   return (
     <section id="Details" className="w-full py-16 lg:py-24 bg-background">
       <div className="max-w-7xl mx-auto px-6">

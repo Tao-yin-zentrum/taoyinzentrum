@@ -10,7 +10,6 @@ import Behandlung from "./pages/Behandlung";
 import About from "./pages/About";
 import Kontakt from "./pages/Kontakt";
 import Impressum from "./pages/Impressum";
-import Placeholder from "./pages/Placeholder";
 import NotFound from "./pages/NotFound";
 
 export const router = createBrowserRouter([

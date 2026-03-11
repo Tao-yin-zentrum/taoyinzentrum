@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.magdalenajohanna.com/sitemap.xml
+Sitemap: https://taoyin-zentrum-ingolstadt.de/sitemap.xml

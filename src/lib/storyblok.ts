@@ -1,15 +1,30 @@
-import { storyblokInit, apiPlugin } from "@storyblok/react";
+import { storyblokInit, apiPlugin, getStoryblokApi } from "@storyblok/react";
 
-// Initialize Storyblok
-const { storyblokApi } = storyblokInit({
-  accessToken: import.meta.env.VITE_STORYBLOK_ACCESS_TOKEN,
-  use: [apiPlugin],
-  apiOptions: {
-    region: "eu", // or "us", depending on your space
-  },
-});
+// Check if token is available
+const accessToken = import.meta.env.VITE_STORYBLOK_ACCESS_TOKEN as string | undefined;
 
-export { storyblokApi };
+let storyblokApiInstance: ReturnType<typeof getStoryblokApi> | null = null;
+
+if (accessToken) {
+  try {
+    storyblokInit({
+      accessToken,
+      use: [apiPlugin],
+      apiOptions: {
+        region: "eu",
+      },
+    });
+    storyblokApiInstance = getStoryblokApi();
+    console.log("✅ Storyblok initialized");
+  } catch (e) {
+    console.warn("⚠️ Storyblok initialization failed, using fallback data:", e);
+    storyblokApiInstance = null;
+  }
+} else {
+  console.info("ℹ️ No Storyblok token set – running with static fallback data.");
+}
+
+export const storyblokApi = storyblokApiInstance;
 
 // Language paths for our custom multi-language setup
 export const LANGUAGES = ["de", "en", "es"] as const;
@@ -31,7 +46,6 @@ export function getStorySlug(page: string, lang?: Language): string {
 // Fetch a story by slug
 export async function fetchStory(slug: string) {
   if (!storyblokApi) {
-    console.warn("Storyblok API not initialized - using fallback data");
     return null;
   }
 
@@ -49,7 +63,6 @@ export async function fetchStory(slug: string) {
 // Fetch global data (navbar, footer, etc.)
 export async function fetchGlobalData(lang: Language = "de") {
   if (!storyblokApi) {
-    console.warn("Storyblok API not initialized - using fallback data");
     return null;
   }
 

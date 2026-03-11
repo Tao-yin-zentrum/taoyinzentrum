@@ -13,34 +13,31 @@ export interface StoryblokStory<T = any> {
 
 // Asset type for images
 export interface StoryblokAsset {
-  id: number;
+  id?: number;
   alt: string;
-  name: string;
-  focus: string;
-  title: string;
+  name?: string;
+  focus?: string;
+  title?: string;
   filename: string;
-  copyright: string;
-  fieldtype: "asset";
-}
-
-// Rich text type
-export interface StoryblokRichText {
-  type: "doc";
-  content: any[];
+  copyright?: string;
+  fieldtype?: "asset";
 }
 
 // Link type
 export interface StoryblokLink {
-  id: string;
-  url: string;
+  id?: string;
+  url?: string;
   linktype: "story" | "url" | "email";
-  fieldtype: "multilink";
+  fieldtype?: "multilink";
   cached_url: string;
 }
 
-// Global content (navbar, footer)
+// ─── Global Content (navbar, footer) ───
+// Matches: migration script "global" component
 export interface GlobalContent {
-  navbar_logo: StoryblokAsset;
+  component: "global";
+  logo: StoryblokAsset;
+  logo_white: StoryblokAsset;
   navbar_links: Array<{
     _uid: string;
     label: string;
@@ -48,337 +45,167 @@ export interface GlobalContent {
     component: "nav_link";
   }>;
   footer_description: string;
-  footer_contact_title: string;
-  footer_address_line1: string;
-  footer_address_line2: string;
-  footer_phone: string;
-  footer_email: string;
-  footer_whatsapp: string;
-  footer_social_links: Array<{
-    _uid: string;
-    platform: string;
-    url: string;
-    component: "social_link";
-  }>;
+  footer_email_1: string;
+  footer_email_2: string;
+  footer_instagram_url: string;
   footer_copyright: string;
+  whatsapp_number: string;
+  contact_phone: string;
+  contact_email: string;
 }
 
-// Home page content
+// ─── Home page ───
+// Matches: migration script "page_home" component
 export interface HomeContent {
   component: "page_home";
-  hero_title: string;
-  hero_subtitle: string;
-  hero_cta_text: string;
-  hero_cta_link: StoryblokLink;
-  hero_background_image: StoryblokAsset;
-  
-  // Details Section
-  details_sections: Array<{
+  // SEO
+  seo_title?: string;
+  seo_description?: string;
+  seo_keywords?: string;
+  seo_image?: StoryblokAsset;
+
+  // Hero
+  hero_title?: string;
+  hero_subtitle?: string;
+  hero_image_1?: StoryblokAsset;
+  hero_image_2?: StoryblokAsset;
+  hero_button_1_text?: string;
+  hero_button_1_link?: string;
+  hero_button_2_text?: string;
+  hero_button_2_link?: string;
+
+  // Details Sections
+  details_sections?: Array<{
     _uid: string;
-    icon: string;
+    eyebrow?: string;
     title: string;
     description: string;
+    image?: StoryblokAsset;
+    button_text_1?: string;
+    button_link_1?: StoryblokLink;
+    button_text_2?: string;
+    button_link_2?: StoryblokLink;
+    image_left?: boolean;
     component: "detail_card";
   }>;
-  
-  // Angebote Section
-  angebote_title: string;
-  angebote_cards: Array<{
+
+  // Angebote
+  angebote_title?: string;
+  angebote_cards?: Array<{
     _uid: string;
-    image: StoryblokAsset;
+    price: string;
+    price_note?: string;
     title: string;
     description: string;
-    link: StoryblokLink;
+    features?: string;
+    phone?: string;
+    email?: string;
+    wide?: boolean;
     component: "angebot_card";
   }>;
-  
-  // Persönliches Angebot Section
-  persoenliches_title: string;
-  persoenliches_subtitle: string;
-  persoenliches_image: StoryblokAsset;
-  persoenliches_features: Array<{
+
+  // Persoenliches Angebot
+  personal_title?: string;
+  personal_features?: Array<{
     _uid: string;
     text: string;
     component: "feature_item";
   }>;
-  persoenliches_cta_text: string;
-  persoenliches_cta_link: StoryblokLink;
-  
+  personal_button_text?: string;
+  personal_button_link?: StoryblokLink;
+
   // Psychotherapie Section
-  psycho_title: string;
-  psycho_description: string;
-  psycho_image: StoryblokAsset;
-  psycho_link: StoryblokLink;
-  psycho_link_text: string;
-  
-  // News Section
-  news_title: string;
-  news_items: Array<{
-    _uid: string;
-    date: string;
-    title: string;
-    description: string;
-    link: StoryblokLink;
-    component: "news_item";
-  }>;
-  
-  // FAQ Section
-  faq_title: string;
-  faq_items: Array<{
+  psycho_title?: string;
+  psycho_description?: string;
+  psycho_image?: StoryblokAsset;
+  psycho_button_text?: string;
+  psycho_button_link?: StoryblokLink;
+
+  // FAQ
+  faq_title?: string;
+  faq_subtitle?: string;
+  faq_items?: Array<{
     _uid: string;
     question: string;
     answer: string;
     component: "faq_item";
   }>;
-  
-  // Testimonials Section
-  testimonials_title: string;
-  testimonials_items: Array<{
+
+  // Testimonials
+  testimonials_eyebrow?: string;
+  testimonials_title?: string;
+  testimonials_subtitle?: string;
+  testimonials_items?: Array<{
     _uid: string;
     text: string;
     author: string;
     rating: number;
     component: "testimonial_item";
   }>;
-  
-  // CTA Section
-  cta_title: string;
-  cta_description: string;
-  cta_button_text: string;
-  cta_button_link: StoryblokLink;
+
+  // CTA
+  cta_title?: string;
+  cta_description?: string;
+  cta_background?: StoryblokAsset;
+  cta_buttons?: string;
 }
 
-// TaoYin page content
-export interface TaoYinContent {
-  component: "page_taoyin";
+// ─── Service pages (TaoYin, QiGong, ChiNeiTsang, Psychotherapie) ───
+// Matches: migration script "page_service" component
+export interface ServicePageContent {
+  component: "page_service";
+  seo_title?: string;
+  seo_description?: string;
   hero_title: string;
-  hero_subtitle: string;
-  hero_image: StoryblokAsset;
-  
-  intro_text: StoryblokRichText;
-  
-  benefits_title: string;
-  benefits_items: Array<{
-    _uid: string;
-    title: string;
-    description: string;
-    component: "benefit_item";
-  }>;
-  
-  practice_title: string;
-  practice_description: StoryblokRichText;
-  practice_image: StoryblokAsset;
-  
-  cta_title: string;
-  cta_button_text: string;
-  cta_button_link: StoryblokLink;
+  hero_subtitle?: string;
+  hero_image?: StoryblokAsset;
+  content_html?: string;
+  sidebar_info?: string;
 }
 
-// Qi Gong page content
-export interface QiGongContent {
-  component: "page_qigong";
-  hero_title: string;
-  hero_subtitle: string;
-  hero_image: StoryblokAsset;
-  
-  intro_text: StoryblokRichText;
-  
-  benefits_title: string;
-  benefits_items: Array<{
-    _uid: string;
-    title: string;
-    description: string;
-    component: "benefit_item";
-  }>;
-  
-  practice_title: string;
-  practice_description: StoryblokRichText;
-  practice_image: StoryblokAsset;
-  
-  cta_title: string;
-  cta_button_text: string;
-  cta_button_link: StoryblokLink;
-}
-
-// Chi Nei Tsang page content
-export interface ChiNeiTsangContent {
-  component: "page_chi_nei_tsang";
-  hero_title: string;
-  hero_subtitle: string;
-  hero_image: StoryblokAsset;
-  
-  intro_text: StoryblokRichText;
-  
-  benefits_title: string;
-  benefits_items: Array<{
-    _uid: string;
-    title: string;
-    description: string;
-    component: "benefit_item";
-  }>;
-  
-  practice_title: string;
-  practice_description: StoryblokRichText;
-  practice_image: StoryblokAsset;
-  
-  session_info_title: string;
-  session_info_items: Array<{
-    _uid: string;
-    label: string;
-    value: string;
-    component: "info_item";
-  }>;
-  
-  cta_title: string;
-  cta_button_text: string;
-  cta_button_link: StoryblokLink;
-}
-
-// Psychotherapie page content
-export interface PsychotherapieContent {
-  component: "page_psychotherapie";
-  hero_title: string;
-  hero_subtitle: string;
-  hero_image: StoryblokAsset;
-  
-  intro_text: StoryblokRichText;
-  
-  methods_title: string;
-  methods_items: Array<{
-    _uid: string;
-    title: string;
-    description: string;
-    icon: string;
-    component: "method_item";
-  }>;
-  
-  areas_title: string;
-  areas_items: Array<{
-    _uid: string;
-    text: string;
-    component: "area_item";
-  }>;
-  
-  process_title: string;
-  process_steps: Array<{
-    _uid: string;
-    step_number: number;
-    title: string;
-    description: string;
-    component: "process_step";
-  }>;
-  
-  cta_title: string;
-  cta_button_text: string;
-  cta_button_link: StoryblokLink;
-}
-
-// Behandlung page content
-export interface BehandlungContent {
-  component: "page_behandlung";
-  hero_title: string;
-  hero_subtitle: string;
-  
-  goals_title: string;
-  goals_items: Array<{
-    _uid: string;
-    title: string;
-    description: string;
-    icon: string;
-    component: "goal_item";
-  }>;
-  
-  approach_title: string;
-  approach_description: StoryblokRichText;
-  
-  cta_title: string;
-  cta_button_text: string;
-  cta_button_link: StoryblokLink;
-}
-
-// Therapien page content
-export interface TherapienContent {
-  component: "page_therapien";
-  hero_title: string;
-  hero_subtitle: string;
-  
-  therapies_items: Array<{
-    _uid: string;
-    title: string;
-    description: string;
-    image: StoryblokAsset;
-    link: StoryblokLink;
-    component: "therapy_item";
-  }>;
-}
-
-// About page content
+// ─── About page ───
+// Matches: migration script "page_about" component
 export interface AboutContent {
   component: "page_about";
-  hero_title: string;
-  hero_image: StoryblokAsset;
-  
-  intro_text: StoryblokRichText;
-  
-  bio_title: string;
-  bio_text: StoryblokRichText;
-  bio_image: StoryblokAsset;
-  
-  qualifications_title: string;
-  qualifications_items: Array<{
-    _uid: string;
-    year: string;
-    title: string;
-    description: string;
-    component: "qualification_item";
-  }>;
-  
-  philosophy_title: string;
-  philosophy_text: StoryblokRichText;
+  seo_title?: string;
+  seo_description?: string;
+  title: string;
+  subtitle?: string;
+  image?: StoryblokAsset;
+  content_html?: string;
 }
 
-// Kontakt page content
+// ─── Kontakt page ───
+// Matches: migration script "page_kontakt" component
 export interface KontaktContent {
   component: "page_kontakt";
-  hero_title: string;
-  hero_subtitle: string;
-  
-  contact_info_title: string;
-  contact_address: string;
-  contact_phone: string;
-  contact_email: string;
-  contact_whatsapp: string;
-  
-  hours_title: string;
-  hours_items: Array<{
-    _uid: string;
-    day: string;
-    hours: string;
-    component: "hours_item";
-  }>;
-  
-  map_title: string;
-  map_embed_url: string;
-  
-  form_title: string;
-  form_name_label: string;
-  form_email_label: string;
-  form_phone_label: string;
-  form_message_label: string;
-  form_submit_text: string;
-  form_success_message: string;
-  form_error_message: string;
+  seo_title?: string;
+  seo_description?: string;
+  title: string;
+  subtitle?: string;
+  address_html?: string;
+  phone?: string;
+  email?: string;
+  whatsapp?: string;
+  map_embed?: string;
 }
 
-// Impressum page content
+// ─── Static-only pages (not yet in Storyblok) ───
+
 export interface ImpressumContent {
   component: "page_impressum";
-  hero_title: string;
-  
-  content_sections: Array<{
-    _uid: string;
-    title: string;
-    content: StoryblokRichText;
-    component: "legal_section";
-  }>;
+  title?: string;
+  content_html?: string;
+}
+
+export interface TherapienContent {
+  component: "page_therapien";
+  title?: string;
+  subtitle?: string;
+}
+
+export interface BehandlungContent {
+  component: "page_behandlung";
+  title?: string;
+  subtitle?: string;
 }

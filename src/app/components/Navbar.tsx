@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router";
 
-// Logo placeholder - replace with your actual logo
-const logoImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='60' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%23037baf'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial, sans-serif' font-size='16' fill='white'%3ETaoyin Zentrum%3C/text%3E%3C/svg%3E";
+// Real logo from CDN
+const logoImg = "https://cdn.prod.website-files.com/6890d61524a7dba397203fde/6890d6bafdd0696561be5520_tao_logo.png";
 
 const angeboteItems = [
   {
