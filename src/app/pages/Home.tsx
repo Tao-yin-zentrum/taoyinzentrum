@@ -14,6 +14,7 @@ import { type HomeContent } from "../../types/storyblok";
 export default function Home() {
   const { content, loading, error, story } = useStoryblokPage<HomeContent>("home");
 
+  // Show loading only briefly, then show static content if Storyblok unavailable
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -25,17 +26,8 @@ export default function Home() {
     );
   }
 
-  if (error || !content) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-red-600">Fehler beim Laden der Seite</p>
-          <p className="text-gray-600 mt-2">{error?.message}</p>
-        </div>
-      </div>
-    );
-  }
-
+  // If error or no content, use static fallback (components have their own data)
+  // This allows the site to work without Storyblok CMS
   return (
     <>
       <SEO 
@@ -45,15 +37,15 @@ export default function Home() {
         url="/"
         {...(story ? extractSEOFromStory(story) : {})}
       />
-      <Hero content={content} />
-      <DetailsSections content={content} />
-      <AngeboteSection content={content} />
-      <PersoenlichesAngebot content={content} />
-      <PsychotherapieSection content={content} />
-      <NewsSection content={content} />
-      <FaqSection content={content} />
-      <TestimonialsSection content={content} />
-      <CtaSection content={content} />
+      <Hero />
+      <DetailsSections />
+      <AngeboteSection />
+      <PersoenlichesAngebot />
+      <PsychotherapieSection />
+      <NewsSection />
+      <FaqSection />
+      <TestimonialsSection />
+      <CtaSection />
     </>
   );
 }

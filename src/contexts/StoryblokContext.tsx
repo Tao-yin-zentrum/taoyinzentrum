@@ -22,7 +22,13 @@ export function StoryblokProvider({ children }: { children: ReactNode }) {
       try {
         setLoading(true);
         const story = await fetchGlobalData(language);
-        setGlobalData(story.content);
+        // Only set content if story exists (Storyblok API available)
+        if (story && story.content) {
+          setGlobalData(story.content);
+        } else {
+          // Use fallback/static data when Storyblok is not available
+          setGlobalData(null);
+        }
         setError(null);
       } catch (err) {
         setError(err instanceof Error ? err : new Error("Failed to load global data"));
