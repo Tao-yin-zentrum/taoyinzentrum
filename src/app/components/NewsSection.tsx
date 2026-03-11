@@ -43,28 +43,28 @@ function ArrowIcon() {
 
 export function NewsSection() {
   return (
-    <section className="w-full py-16 lg:py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="mb-10">
-          <p className="text-[11px] tracking-[0.2em] uppercase text-primary mb-3">
+    <section className="w-full bg-background py-[var(--section-padding-mobile-p)] md:py-[var(--section-padding-tablet)] lg:py-[var(--section-padding)] hidden">
+      <div className="max-w-[1280px] mx-auto px-[var(--container-padding)]">
+        <div className="mb-[var(--gap-md)]">
+          <p className="text-[var(--eyebrow-size)] tracking-[var(--eyebrow-letter-spacing)] uppercase text-current/60 mb-[var(--eyebrow-margin-bottom)] leading-[var(--eyebrow-line-height)]">
             Raum für dich
           </p>
-          <h2 className="mb-3">
+          <h2 className="mb-[var(--space-1x)]">
             Neuigkeiten und Interessantes
           </h2>
-          <p className="text-[16px] text-foreground/60 max-w-xl">
+          <p className="text-[var(--text-lg-size)] text-current/70 leading-[1.6] max-w-[var(--container-sm-width)]">
             Hier findest du alle Neuigkeiten unseres Tao Yin Zentrums und
             interessante Artikel zum Lesen.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-[var(--gap-sm)]">
           {newsItems.map((item, i) => (
             <a
               key={i}
               href="#"
               className="group block"
             >
-              <div className="aspect-[3/2] rounded-lg overflow-hidden mb-4">
+              <div className="aspect-[3/2] rounded-[var(--radius-image)] overflow-hidden mb-4">
                 <img
                   src={item.image}
                   alt={item.alt}

@@ -47,25 +47,30 @@ export function ContentSection({
 }: ContentSectionProps) {
   const textContent = (
     <div className="flex flex-col justify-center">
-      <p className="text-[11px] tracking-[0.2em] uppercase mb-4 text-primary">
+      {/* Eyebrow: Webflow = 0.9rem, uppercase, tracking 0.01em, 60% opacity, mb 1.25rem */}
+      <p className="text-[var(--eyebrow-size)] tracking-[var(--eyebrow-letter-spacing)] uppercase text-current/60 mb-[var(--eyebrow-margin-bottom)] leading-[var(--eyebrow-line-height)]">
         {eyebrow}
       </p>
-      <h2 className="mb-5">{heading}</h2>
-      <p className="text-[17px] leading-[1.7] text-foreground/60 mb-8 max-w-lg whitespace-pre-line">
+      {/* Heading h2 */}
+      <h2>{heading}</h2>
+      {/* Paragraph large: Webflow .paragraph_large.margin-bottom_small = mb 2rem */}
+      <p className="text-[var(--text-lg-size)] leading-[1.6] text-current/60 mb-[var(--space-2x)] whitespace-pre-line">
         {paragraph}
       </p>
-      <div className="flex flex-col gap-3">
+      {/* Text-button links */}
+      <div className="flex flex-col gap-0">
         {links.map((link) => (
-          <Link
-            key={link.label}
-            to={link.href}
-            className="group inline-flex items-center gap-2.5 text-[15px] text-secondary hover:opacity-80 transition-opacity"
-          >
-            <span>{link.label}</span>
-            <span className="transition-transform group-hover:translate-x-1">
-              <ArrowIcon />
-            </span>
-          </Link>
+          <div key={link.label} className="mt-[var(--space-2x)]">
+            <Link
+              to={link.href}
+              className="group inline-flex items-center gap-[0.5em] text-[1rem] font-medium text-[var(--wf-text-on-accent)] hover:gap-[0.7em] hover:text-secondary transition-all duration-200"
+            >
+              <span>{link.label}</span>
+              <span className="inline-flex w-[1em] h-[1em]">
+                <ArrowIcon />
+              </span>
+            </Link>
+          </div>
         ))}
       </div>
     </div>
@@ -76,14 +81,14 @@ export function ContentSection({
       <img
         src={imageSrc}
         alt={imageAlt}
-        className="w-full h-auto rounded-lg object-cover"
+        className="w-full h-auto rounded-[var(--radius-image)] object-contain"
         loading="lazy"
       />
     </div>
   );
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-[var(--gap-lg)] items-center">
       {imageLeft ? (
         <>
           <div className="order-1">{imageContent}</div>

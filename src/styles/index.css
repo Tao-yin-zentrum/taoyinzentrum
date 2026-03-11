@@ -7,12 +7,27 @@
   font-family: 'Source Sans 3', sans-serif;
   font-size: 1rem;
   line-height: 1.8;
-  color: rgba(45, 55, 72, 0.75);
-  margin-bottom: 1.25rem;
+  color: color-mix(in srgb, currentColor 75%, transparent);
+  margin-bottom: 0.7em;
+}
+
+.prose-custom h2 {
+  margin-top: 0;
+  margin-bottom: var(--space-1-25x, 1.25rem);
+}
+
+.prose-custom h3 {
+  margin-top: var(--space-2x, 2rem);
+  margin-bottom: var(--space-1x, 1rem);
+}
+
+.prose-custom h4 {
+  margin-top: var(--space-2x, 2rem);
+  margin-bottom: var(--space-0-75x, 0.75rem);
 }
 
 .prose-custom strong {
-  color: #2D3748;
+  color: currentColor;
 }
 
 .prose-custom em {
@@ -20,19 +35,42 @@
 }
 
 .prose-custom blockquote {
-  border-left: 3px solid #1B7FAE;
+  border-left: 3px solid var(--wf-neutral-inverse, #037baf);
   padding-left: 1.25rem;
-  margin: 2rem 0;
+  margin: var(--space-2x, 2rem) 0;
 }
 
 .prose-custom blockquote p {
   font-style: italic;
-  color: rgba(45, 55, 72, 0.65);
+  color: color-mix(in srgb, currentColor 65%, transparent);
 }
 
 .prose-custom blockquote footer {
   font-style: normal;
   font-size: 0.875rem;
-  color: rgba(45, 55, 72, 0.5);
+  color: color-mix(in srgb, currentColor 50%, transparent);
   margin-top: 0.5rem;
+}
+
+.prose-custom figure {
+  margin: var(--space-2x, 2rem) 0;
+}
+
+.prose-custom ul {
+  padding-left: 1.5em;
+  margin: 0.7em 0;
+}
+
+.prose-custom ul li {
+  margin-bottom: 0.25em;
+  color: color-mix(in srgb, currentColor 75%, transparent);
+}
+
+.prose-custom a {
+  color: var(--wf-neutral-inverse, #037baf);
+  text-decoration: underline;
+}
+
+.prose-custom a:hover {
+  opacity: 0.8;
 }

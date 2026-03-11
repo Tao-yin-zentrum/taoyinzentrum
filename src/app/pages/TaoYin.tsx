@@ -1,40 +1,39 @@
 import { AngeboteSection } from "../components/AngeboteSection";
+import { CtaSection } from "../components/CtaSection";
 
 export default function TaoYin() {
   return (
     <>
-      {/* Hero Header */}
-      <header className="w-full py-12 lg:py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            {/* Left: 3 images in a grid */}
-            <div className="grid grid-cols-3 gap-3">
+      {/* Hero Header — section.is-secondary */}
+      <header className="w-full bg-[var(--wf-neutral-secondary)] text-foreground py-[var(--section-padding-mobile-p)] md:py-[var(--section-padding-tablet)] lg:py-[var(--section-padding)]">
+        <div className="max-w-[var(--container-width)] mx-auto px-[var(--container-padding)]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-[var(--gap-xxl)] items-center">
+            {/* Left: 2-col grid with 3 images, gap-xsmall */}
+            <div className="grid grid-cols-2 gap-[var(--gap-xs)]">
               <img
                 src="https://cdn.prod.website-files.com/image-generation-assets/ec1e1865-4371-4deb-b640-940bfd2c1974.avif"
                 alt="Ruhige Landschaft mit Fluss"
-                className="w-full object-cover rounded-lg aspect-[2/3]"
+                className="w-full object-cover rounded-[var(--radius-image)] aspect-[2/3]"
                 loading="lazy"
               />
               <img
                 src="https://cdn.prod.website-files.com/image-generation-assets/3cc8d6ee-98ad-4bfb-ae1b-618e78b0ce21.avif"
                 alt="Qi Gong Kurs"
-                className="w-full object-cover rounded-lg aspect-[2/3]"
+                className="w-full object-cover rounded-[var(--radius-image)] aspect-[2/3]"
                 loading="lazy"
               />
               <img
                 src="https://cdn.prod.website-files.com/image-generation-assets/ee125b47-41aa-4ec5-a593-18b12a1fca27.avif"
                 alt="Tao Yin Praxis"
-                className="w-full object-cover rounded-lg aspect-[2/3]"
+                className="w-full object-cover rounded-[var(--radius-image)] aspect-[2/3]"
                 loading="lazy"
               />
             </div>
 
-            {/* Right: Text */}
-            <div>
-              <h1 className="text-foreground mb-6">
-                Taoyin: was bedeutet es?
-              </h1>
-              <p className="text-[17px] leading-[1.7] text-foreground/60 max-w-lg">
+            {/* Right: Header text */}
+            <div className="flex flex-col">
+              <h1>Taoyin: was bedeutet es?</h1>
+              <p className="text-[var(--text-lg-size)] leading-[1.6] text-current/70 text-balance max-w-[var(--container-sm-width)]">
                 Tao Yin ist eine jahrtausendealte chinesische Bewegungs- und
                 Atempraxis zur Förderung von Gesundheit und innerer Balance.
                 Sanfte Dehnungen, fließende Bewegungen und gezielte
@@ -48,24 +47,24 @@ export default function TaoYin() {
         </div>
       </header>
 
-      {/* Section: TAO */}
-      <section className="w-full py-16 lg:py-24 bg-white">
-        <div className="max-w-3xl mx-auto px-6">
+      {/* Section: TAO — section (bg-primary / white) */}
+      <section className="w-full bg-[var(--wf-neutral-primary)] text-foreground py-[var(--section-padding-mobile-p)] md:py-[var(--section-padding-tablet)] lg:py-[var(--section-padding)] overflow-clip">
+        <div className="max-w-[var(--container-sm-width)] mx-auto px-[var(--container-padding)]">
           <article className="prose-custom">
-            <h2 className="text-foreground mb-6">TAO</h2>
+            <h2>TAO</h2>
             <p>
-              Das Wort "Daoismus" leitet sich ab von "Dao"
+              Das Wort &bdquo;Daoismus&ldquo; leitet sich ab von &bdquo;Dao&ldquo;
               (Tao), einem Begriff der chinesischen Philosophie, der bereits vor
               dem Daodejing verwendet wurde, aber erst in diesem Text seine
               zentrale Stellung und besondere, universale Bedeutung erhielt.
-              "Dao" bedeutete ursprünglich "Weg", im
-              klassischen Chinesisch aber bereits "Methode",
-              "Prinzip", "der rechte Weg". Bei Laozi nimmt
+              &bdquo;Dao&ldquo; bedeutete ursprünglich &bdquo;Weg&ldquo;, im
+              klassischen Chinesisch aber bereits &bdquo;Methode&ldquo;,
+              &bdquo;Prinzip&ldquo;, &bdquo;der rechte Weg&ldquo;. Bei Laozi nimmt
               dann der Begriff des Dao die Bedeutung eines der ganzen Welt
               zugrunde liegenden, alldurchdringenden Prinzips an. Es ist die
               höchste Wirklichkeit und das höchste Mysterium, die
               uranfängliche Einheit, das kosmische Gesetz und Absolute. Aus
-              dem Dao entstehen die "zehntausend Dinge", also der
+              dem Dao entstehen die &bdquo;zehntausend Dinge&ldquo;, also der
               Kosmos, und auch die Ordnung der Dinge entsteht aus ihm,
               ähnlich einem Naturgesetz, doch ist dem Dao selbst kein
               omnipotentes Wesen zuzuschreiben, sondern es ist Ursprung und
@@ -83,8 +82,8 @@ export default function TaoYin() {
             </p>
             <blockquote>
               <p>
-                "Das Tao, das sich mit Worten beschreiben lässt, ist
-                nicht das wahre Tao."
+                &bdquo;Das Tao, das sich mit Worten beschreiben lässt, ist
+                nicht das wahre Tao.&ldquo;
               </p>
               <footer>– Lao Tse: Tao Te King</footer>
             </blockquote>
@@ -96,11 +95,11 @@ export default function TaoYin() {
             </p>
           </article>
 
-          {/* YouTube Embed */}
-          <div className="mt-10 relative w-full" style={{ paddingTop: "56.17%" }}>
+          {/* YouTube Embed — Webflow .w-embed-youtubevideo */}
+          <div className="mt-[var(--space-2x)] relative w-full" style={{ paddingTop: "56.17%" }}>
             <iframe
               src="https://www.youtube.com/embed/fsmXRcD_jYI?rel=0&controls=1&autoplay=0&mute=0&start=0"
-              className="absolute inset-0 w-full h-full rounded-lg"
+              className="absolute inset-0 w-full h-full rounded-[var(--radius-image)]"
               allow="autoplay; encrypted-media"
               allowFullScreen
               title="Dimensions: Cosmic Eye HD"
@@ -109,11 +108,11 @@ export default function TaoYin() {
         </div>
       </section>
 
-      {/* Section: YIN */}
-      <section className="w-full py-16 lg:py-24 bg-background">
-        <div className="max-w-3xl mx-auto px-6">
+      {/* Section: YIN — section.is-secondary */}
+      <section className="w-full bg-[var(--wf-neutral-secondary)] text-foreground py-[var(--section-padding-mobile-p)] md:py-[var(--section-padding-tablet)] lg:py-[var(--section-padding)] overflow-clip">
+        <div className="max-w-[var(--container-sm-width)] mx-auto px-[var(--container-padding)]">
           <article className="prose-custom">
-            <h2 className="text-foreground mb-6">Yin</h2>
+            <h2>Yin</h2>
             <p>
               <strong>Yin und Yang</strong> (chinesisch 陰陽 /
               阴阳, Pinyin <em>yīn yáng</em>) sind zwei
@@ -126,22 +125,22 @@ export default function TaoYin() {
               passiv, Ruhe) gegenüberstehend dargestellt werden.
             </p>
 
-            <h3 className="text-foreground mt-8 mb-4">
+            <h3>
               Yin und Yang als Prinzipien der Wandlung und der Korrelation
             </h3>
 
-            {/* Yin Yang Symbol */}
-            <div className="flex justify-center my-8">
+            {/* Yin Yang Symbol — centered figure */}
+            <figure className="flex justify-center my-[var(--space-2x)]">
               <img
                 src="https://cdn.prod.website-files.com/wordpress/wp-content/uploads/2017/01/Yin_yang.svg_.png"
                 alt="Yin und Yang Symbol"
                 className="w-40 h-40 object-contain"
                 loading="lazy"
               />
-            </div>
+            </figure>
 
             <p>
-              Yin und Yang bezeichnen "Gegensätze" in ihrer
+              Yin und Yang bezeichnen &bdquo;Gegensätze&ldquo; in ihrer
               wechselseitigen Bezogenheit als eine Gesamtheit, einen ewigen
               Kreislauf. Daher können sie zur Erklärung von
               Wandlungsvorgängen und Prozessen und zur Darstellung der
@@ -155,13 +154,13 @@ export default function TaoYin() {
 
             <blockquote>
               <p>
-                "Das Urprinzip bewegt sich und erzeugt Yang. Wenn die
+                &bdquo;Das Urprinzip bewegt sich und erzeugt Yang. Wenn die
                 Bewegung ihr Ende erreicht, so wird sie still, und diese Stille
                 erzeugt Yin. Wenn diese Stille ihr Ende erreicht, dann geht sie
                 wieder in Bewegung über. So haben wir abwechselnd bald
                 Bewegung, bald Ruhe. Sie beide bilden zusammen die Basis, von
                 der aus durch Abtrennung Yin und Yang entstehen und auf der die
-                beiden Modi ruhen."
+                beiden Modi ruhen.&ldquo;
               </p>
               <footer>– Alfred Forke</footer>
             </blockquote>
@@ -194,21 +193,21 @@ export default function TaoYin() {
         </div>
       </section>
 
-      {/* Section: TAOYIN */}
-      <section className="w-full py-16 lg:py-24 bg-white">
-        <div className="max-w-3xl mx-auto px-6">
+      {/* Section: TAOYIN — section (bg-primary / white) */}
+      <section className="w-full bg-[var(--wf-neutral-primary)] text-foreground py-[var(--section-padding-mobile-p)] md:py-[var(--section-padding-tablet)] lg:py-[var(--section-padding)] overflow-clip">
+        <div className="max-w-[var(--container-sm-width)] mx-auto px-[var(--container-padding)]">
           <article className="prose-custom">
-            <h2 className="text-foreground mb-6">TAOYIN</h2>
+            <h2>TAOYIN</h2>
             <p>
               Tao Yin (manchmal als Taoist Yoga bezeichnet) ist eine Reihe von
               Übungen (vor allem in liegenden und sitzenden Positionen,
-              aber auch in stehenden Positionen) von Taoisten, um ch'i, die
+              aber auch in stehenden Positionen) von Taoisten, um ch&apos;i, die
               innere Energie des Körpers nach traditioneller chinesischer
               Medizin zu pflegen. Die Praxis von Tao Yin war ein Vorläufer
               des Qigong und wurde in chinesischen taoistischen Klöstern
               für die Gesundheit und zur spirituellen Kultivierung
               praktiziert. Tao Yin ist auch ein Element in der bekannten
-              "weichen Stil" chinesischen Kampfkunst, T'ai Chi Ch'uan.
+              &bdquo;weichen Stil&ldquo; chinesischen Kampfkunst, T&apos;ai Chi Ch&apos;uan.
             </p>
             <p>
               Das Hauptziel von Tao Yin ist es, Gleichgewicht zwischen inneren
@@ -231,8 +230,11 @@ export default function TaoYin() {
         </div>
       </section>
 
-      {/* Angebote (reused from homepage) */}
+      {/* Angebote — section.is-secondary (reused component) */}
       <AngeboteSection />
+
+      {/* CTA Section */}
+      <CtaSection />
     </>
   );
 }

@@ -9,16 +9,16 @@ const angeboteItems = [
     category: "Tao Yin & Qigong",
     items: [
       { label: "Tao Yin", desc: "Sanfte Bewegung, tiefe Entspannung.", href: "/taoyin" },
-      { label: "Qigong", desc: "Lebensenergie stärken, Balance finden.", href: "/qi-gong" },
-      { label: "Chi Nei Tsang", desc: "Bauchmassage für innere Harmonie.", href: "/chi-nei-tsang" },
+      { label: "Qigong", desc: "Lebensenergie st\u00e4rken, Balance finden.", href: "/qi-gong" },
+      { label: "Chi Nei Tsang", desc: "Bauchmassage f\u00fcr innere Harmonie.", href: "/chi-nei-tsang" },
     ],
   },
   {
     category: "Ganzheitliche Psychotherapie",
     items: [
-      { label: "Zur Praxis", desc: "Ganzheitliche Praxis für Psychotherapie", href: "/psychotherapie" },
+      { label: "Zur Praxis", desc: "Ganzheitliche Praxis f\u00fcr Psychotherapie", href: "/psychotherapie" },
       { label: "Therapien", desc: "Meine verschiedenen Therapie Angebote", href: "/therapien" },
-      { label: "Behandlung", desc: "Welche Möglichkeiten gibt es", href: "/psychotherapie/ziele" },
+      { label: "Behandlung", desc: "Welche M\u00f6glichkeiten gibt es", href: "/psychotherapie/ziele" },
     ],
   },
 ];
@@ -46,15 +46,15 @@ export function Navbar() {
   }, [location.pathname]);
 
   return (
-    <nav className="w-full bg-[#eff5f6] sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 flex items-center h-[72px]">
+    <nav className="w-full bg-[var(--background-secondary)] sticky top-0 z-50">
+      <div className="max-w-[1280px] mx-auto px-[var(--container-padding)] py-[var(--space-0-75x)] flex items-center rounded-b-[var(--radius-card)]">
         {/* Logo */}
-        <Link to="/" className="flex-shrink-0 mr-8">
-          <img src={logoImg} alt="Taoyin Zentrum" className="h-14 w-auto" />
+        <Link to="/" className="flex-shrink-0 flex items-center h-10 mr-[var(--gap-sm)]">
+          <img src={logoImg} alt="Taoyin Zentrum" className="h-10 w-auto" />
         </Link>
 
         {/* Desktop Nav - left aligned */}
-        <div className="hidden lg:flex items-center gap-7 flex-1">
+        <div className="hidden lg:flex items-center gap-[var(--gap-sm)] flex-1">
           {/* Angebote Dropdown */}
           <div
             ref={angeboteRef}
@@ -62,7 +62,7 @@ export function Navbar() {
             onMouseEnter={() => setAngeboteOpen(true)}
             onMouseLeave={() => setAngeboteOpen(false)}
           >
-            <button className="flex items-center gap-1.5 text-[15px] text-primary/80 hover:text-primary transition-colors py-2">
+            <button className="flex items-center gap-[var(--gap-xxs)] py-2 px-3 rounded-[var(--radius-button)] text-[1rem] text-inherit hover:opacity-70 transition-opacity">
               Angebote
               <svg className={`w-3 h-3 transition-transform ${angeboteOpen ? "rotate-180" : ""}`} viewBox="0 0 16 16" fill="none">
                 <path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="2" />
@@ -70,12 +70,12 @@ export function Navbar() {
             </button>
             {angeboteOpen && (
               <div className="absolute top-full left-0 pt-2 z-50" style={{ left: `-${angeboteRef.current?.getBoundingClientRect().left ?? 0}px`, width: '100vw' }}>
-                <div className="max-w-7xl mx-auto px-6">
-                  <div className="bg-background rounded-xl shadow-xl border border-secondary/30 p-6 grid grid-cols-[1fr_1fr_minmax(220px,auto)] gap-6">
+                <div className="max-w-[1280px] mx-auto px-[var(--container-padding)]">
+                  <div className="bg-background rounded-[var(--radius-card)] shadow-xl border border-[var(--wf-inverse-a20)] p-[var(--space-3x)] grid grid-cols-[1fr_1fr_minmax(220px,auto)] gap-[var(--gap-md)]">
                     {/* Left two columns */}
                     {angeboteItems.map((group) => (
                       <div key={group.category}>
-                        <p className="text-[11px] tracking-[0.15em] uppercase text-primary/60 mb-4">
+                        <p className="text-[var(--eyebrow-size)] tracking-[var(--eyebrow-letter-spacing)] uppercase text-current/60 mb-[var(--eyebrow-margin-bottom)]">
                           {group.category}
                         </p>
                         <div className="space-y-1">
@@ -83,14 +83,14 @@ export function Navbar() {
                             <Link
                               key={item.href}
                               to={item.href}
-                              className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-white/60 transition-colors group"
+                              className="flex items-start gap-3 p-2.5 rounded-[var(--radius-button)] hover:bg-white/60 transition-colors group"
                             >
-                              <div className="text-primary/50 mt-0.5 group-hover:text-primary transition-colors">
+                              <div className="text-current/50 mt-0.5 group-hover:text-current transition-colors">
                                 <DocIcon />
                               </div>
                               <div>
-                                <div className="text-[14px] text-primary">{item.label}</div>
-                                <div className="text-[12px] text-foreground/50">{item.desc}</div>
+                                <div className="text-[1rem]"><strong>{item.label}</strong></div>
+                                <div className="text-[var(--text-sm-size)] text-current/60">{item.desc}</div>
                               </div>
                             </Link>
                           ))}
@@ -98,19 +98,23 @@ export function Navbar() {
                       </div>
                     ))}
                     {/* Right: Individuelle Anfragen card */}
-                    <div className="bg-primary text-white rounded-xl p-6 flex flex-col justify-between">
+                    <div className="bg-primary text-primary-foreground rounded-[var(--radius-card)] p-[var(--card-padding)] flex flex-col justify-between">
                       <div>
-                        <div className="text-[18px] mb-2">Individuelle Anfragen</div>
-                        <p className="text-[13px] text-white/70 leading-relaxed">
-                          Das passende Angebot für dich, individuell abgestimmt auf deine Bedürfnisse
+                        <div className="text-[var(--h3-size)]">Individuelle Anfragen</div>
+                        <p className="text-[var(--text-sm-size)] text-current/70 leading-relaxed">
+                          Das passende Angebot f&uuml;r dich, individuell abgestimmt auf deine Bed&uuml;rfnisse
                         </p>
                       </div>
-                      <Link to="/kontakt" className="inline-flex items-center gap-2 text-[14px] text-white/80 hover:text-white transition-colors mt-6">
-                        Jetzt anfragen
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                          <path d="M2 8H14.5M14.5 8L8.5 2M14.5 8L8.5 14" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-                        </svg>
-                      </Link>
+                      <div className="mt-auto">
+                        <div className="mt-[var(--space-2x)]">
+                          <Link to="/kontakt" className="inline-flex items-center gap-[0.5em] text-[1rem] font-medium text-current/80 hover:gap-[0.7em] hover:text-current transition-all">
+                            Jetzt anfragen
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                              <path d="M2 8H14.5M14.5 8L8.5 2M14.5 8L8.5 14" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+                            </svg>
+                          </Link>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -120,17 +124,17 @@ export function Navbar() {
 
           <Link
             to="/about"
-            className={`text-[15px] py-2 transition-colors ${
-              location.pathname === "/about" ? "text-primary" : "text-primary/80 hover:text-primary"
+            className={`py-2 px-3 rounded-[var(--radius-button)] text-[1rem] transition-opacity ${
+              location.pathname === "/about" ? "text-inherit" : "text-inherit hover:opacity-70"
             }`}
           >
-            Über mich
+            &Uuml;ber mich
           </Link>
 
           <Link
             to="/kontakt"
-            className={`text-[15px] py-2 transition-colors ${
-              location.pathname === "/kontakt" ? "text-primary" : "text-primary/80 hover:text-primary"
+            className={`py-2 px-3 rounded-[var(--radius-button)] text-[1rem] transition-opacity ${
+              location.pathname === "/kontakt" ? "text-inherit" : "text-inherit hover:opacity-70"
             }`}
           >
             Kontakt
@@ -143,7 +147,7 @@ export function Navbar() {
             onMouseEnter={() => setLangOpen(true)}
             onMouseLeave={() => setLangOpen(false)}
           >
-            <button className="flex items-center gap-1.5 text-[15px] text-primary/80 hover:text-primary transition-colors py-2">
+            <button className="flex items-center gap-[var(--gap-xxs)] py-2 px-3 rounded-[var(--radius-button)] text-[1rem] text-inherit hover:opacity-70 transition-opacity">
               Sprache
               <svg className={`w-3 h-3 transition-transform ${langOpen ? "rotate-180" : ""}`} viewBox="0 0 16 16" fill="none">
                 <path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="2" />
@@ -151,11 +155,11 @@ export function Navbar() {
             </button>
             {langOpen && (
               <div className="absolute top-full right-0 pt-2 z-50">
-                <div className="bg-white rounded-lg shadow-lg border border-border py-1 min-w-[80px]">
+                <div className="bg-background rounded-[var(--radius-button)] shadow-lg border border-[var(--wf-inverse-a10)] py-1 min-w-[80px]">
                   {["DE", "EN", "ES"].map((lang) => (
                     <button
                       key={lang}
-                      className="block w-full text-left px-4 py-2 text-[14px] text-foreground/70 hover:text-foreground hover:bg-background/50 transition-colors"
+                      className="block w-full text-left px-4 py-2 text-[1rem] text-inherit hover:opacity-70 transition-opacity"
                     >
                       {lang}
                     </button>
@@ -171,15 +175,16 @@ export function Navbar() {
           {/* CTA */}
           <Link
             to="/kontakt"
-            className="bg-secondary text-secondary-foreground px-6 py-2.5 rounded-lg text-[14px] hover:bg-secondary/90 transition-colors"
+            className="inline-flex items-center justify-center bg-secondary text-secondary-foreground py-[1em] px-[1.5em] rounded-[var(--radius-button)] text-[1rem] font-normal leading-[1.2] hover:opacity-90 transition-all"
           >
-            Kontakt & Anfahrt
+            Kontakt &amp; Anfahrt
           </Link>
         </div>
 
-        {/* Mobile Hamburger */}
+        {/* Mobile: Spacer + Hamburger */}
+        <div className="lg:hidden flex-1" />
         <button
-          className="lg:hidden text-foreground p-2"
+          className="lg:hidden text-inherit p-[var(--space-0-5x)] flex items-center justify-center"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Menu"
         >
@@ -200,11 +205,11 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden bg-white border-t border-border">
-          <div className="px-6 py-4 space-y-1">
+        <div className="lg:hidden bg-primary text-primary-foreground">
+          <div className="px-[var(--container-padding)] py-[var(--space-1x)] space-y-1">
             <button
               onClick={() => setMobileAngeboteOpen(!mobileAngeboteOpen)}
-              className="flex items-center justify-between w-full py-3 text-[15px] text-foreground/70"
+              className="flex items-center justify-between w-full py-3 text-[var(--text-lg-size)] text-inherit"
             >
               Angebote
               <svg className={`w-3 h-3 transition-transform ${mobileAngeboteOpen ? "rotate-180" : ""}`} viewBox="0 0 16 16" fill="none">
@@ -219,7 +224,7 @@ export function Navbar() {
                       key={item.href}
                       to={item.href}
                       onClick={() => setMobileOpen(false)}
-                      className="block py-2 text-[14px] text-foreground/60 hover:text-foreground"
+                      className="block py-2 text-[1rem] text-inherit/70 hover:text-inherit"
                     >
                       {item.label}
                     </Link>
@@ -228,18 +233,28 @@ export function Navbar() {
               </div>
             )}
 
-            <Link to="/about" onClick={() => setMobileOpen(false)} className="block py-3 text-[15px] text-foreground/70">
-              Über mich
+            <Link to="/about" onClick={() => setMobileOpen(false)} className="block py-3 text-[var(--text-lg-size)] text-inherit">
+              &Uuml;ber mich
             </Link>
-            <Link to="/kontakt" onClick={() => setMobileOpen(false)} className="block py-3 text-[15px] text-foreground/70">
+            <Link to="/kontakt" onClick={() => setMobileOpen(false)} className="block py-3 text-[var(--text-lg-size)] text-inherit">
               Kontakt
             </Link>
+
+            {/* Language in mobile */}
+            <div className="py-3 flex gap-2">
+              {["DE", "EN", "ES"].map((lang) => (
+                <button key={lang} className="text-[1rem] text-inherit/70 hover:text-inherit px-2 py-1">
+                  {lang}
+                </button>
+              ))}
+            </div>
+
             <Link
               to="/kontakt"
               onClick={() => setMobileOpen(false)}
-              className="block mt-4 bg-secondary text-secondary-foreground text-center px-6 py-3 rounded-lg text-[14px]"
+              className="block mt-2 bg-secondary text-secondary-foreground text-center py-[1em] px-[1.5em] rounded-[var(--radius-button)] text-[1rem] font-normal leading-[1.2]"
             >
-              Kontakt & Anfahrt
+              Kontakt &amp; Anfahrt
             </Link>
           </div>
         </div>

@@ -39,44 +39,47 @@ interface FaqSectionProps {
 export function FaqSection({ content }: FaqSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   
-  // Use Storyblok content if available, otherwise fallback
   const title = content?.faq_title || "Raum für Achtsamkeit & Balance";
   const subtitle = content?.faq_subtitle || "Antworten auf häufige Fragen zu unseren taoistischen Angeboten, Methoden und deinem Weg zu mehr Wohlbefinden.";
   const faqs = content?.faq_items || fallbackFaqs;
 
   return (
-    <section className="w-full py-16 lg:py-24 bg-primary">
-      <div className="max-w-3xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-white mb-4">
+    <section className="w-full bg-[var(--wf-neutral-secondary)] py-[var(--section-padding-mobile-p)] md:py-[var(--section-padding-tablet)] lg:py-[var(--section-padding)]">
+      {/* container.is-small like Webflow */}
+      <div className="max-w-[var(--container-sm-width)] mx-auto px-[var(--container-padding)]">
+        {/* header.is-align-center */}
+        <div className="text-center mb-[var(--gap-md)]">
+          <h2 className="mb-[var(--space-1x)]">
             {title}
           </h2>
-          <p className="text-white/60 text-[16px]">
+          <p className="text-[var(--text-lg-size)] leading-[1.6] text-current/60">
             {subtitle}
           </p>
         </div>
-        <div className="space-y-0">
+
+        {/* Accordion list */}
+        <div className="flex flex-col">
           {faqs.map((faq, i) => (
-            <div key={faq._uid || i} className="border-b border-white/10">
+            <div key={faq._uid || i} className="border-b border-current/10">
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between py-5 text-left group"
+                className="w-full flex items-center justify-between py-[var(--space-1-25x)] text-left group cursor-pointer"
               >
-                <span className="text-[17px] text-white/90 group-hover:text-white transition-colors pr-4">
+                <span className="text-[1.125rem] leading-[1.6] text-current/80 group-hover:text-current transition-colors pr-4">
                   {faq.question}
                 </span>
                 <ChevronDown
-                  className={`w-5 h-5 text-white/50 flex-shrink-0 transition-transform duration-200 ${
+                  className={`w-5 h-5 text-current/40 flex-shrink-0 transition-transform duration-200 ${
                     openIndex === i ? "rotate-180" : ""
                   }`}
                 />
               </button>
               <div
                 className={`overflow-hidden transition-all duration-300 ${
-                  openIndex === i ? "max-h-96 pb-5" : "max-h-0"
+                  openIndex === i ? "max-h-96 pb-[var(--space-1x)]" : "max-h-0"
                 }`}
               >
-                <p className="text-[15px] text-white/50 leading-relaxed">
+                <p className="text-[1rem] text-current/60 leading-[1.8]">
                   {faq.answer}
                 </p>
               </div>

@@ -31,17 +31,17 @@ export function TestimonialsSection({ content }: TestimonialsSectionProps) {
   const testimonials = content?.testimonials_items || defaultTestimonials;
   
   return (
-    <section className="w-full py-16 lg:py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="w-full bg-background py-[var(--section-padding-mobile-p)] md:py-[var(--section-padding-tablet)] lg:py-[var(--section-padding)]">
+      <div className="max-w-[1280px] mx-auto px-[var(--container-padding)]">
         {/* Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[var(--gap-sm)] mb-[var(--gap-md)]">
           <div>
-            <p className="text-[11px] tracking-[0.2em] uppercase text-primary mb-3">
+            <p className="text-[var(--eyebrow-size)] tracking-[var(--eyebrow-letter-spacing)] uppercase text-current/60 mb-[var(--eyebrow-margin-bottom)] leading-[var(--eyebrow-line-height)]">
               Erfahrungen aus unserer Gemeinschaft
             </p>
-            <h2>Stimmen, die berühren</h2>
+            <h2>Stimmen, die ber&uuml;hren</h2>
           </div>
-          <p className="text-[16px] text-foreground/60 leading-relaxed lg:pt-8">
+          <p className="text-[var(--text-lg-size)] text-current/70 leading-[1.6] lg:pt-8">
             Unsere Teilnehmer*innen teilen, wie die taoistischen Praktiken ihr
             Leben bereichern – mit mehr Ruhe, innerer Balance und neuer
             Lebensenergie. Lass dich inspirieren und finde deinen eigenen Weg in
@@ -50,11 +50,11 @@ export function TestimonialsSection({ content }: TestimonialsSectionProps) {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-[var(--gap-sm)] mb-[var(--gap-md)]">
           {testimonials.map((t) => (
             <div
               key={t.name}
-              className="bg-white rounded-xl p-7 text-center"
+              className="bg-white shadow-[inset_0_0_0_1px_var(--wf-inverse-a20)] rounded-[var(--radius-card)] p-[var(--card-padding)] text-center"
             >
               <p className="text-[14px] text-foreground mb-4">{t.name}</p>
               <p className="text-[14px] text-foreground/60 leading-relaxed">
@@ -70,7 +70,7 @@ export function TestimonialsSection({ content }: TestimonialsSectionProps) {
             href="https://www.google.com/search?q=Taoyin+Zentrum+Rezensionen"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center bg-secondary text-secondary-foreground px-7 py-3 rounded-lg text-[15px] hover:bg-secondary/90 transition-colors"
+            className="inline-flex items-center justify-center bg-secondary text-secondary-foreground py-[1em] px-[1.5em] rounded-[var(--radius-button)] text-[1rem] font-normal leading-[1.2] hover:opacity-90 transition-all"
           >
             Mehr Rezensionen auf Google
           </a>

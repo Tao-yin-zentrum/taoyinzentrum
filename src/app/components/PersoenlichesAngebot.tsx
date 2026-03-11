@@ -22,9 +22,9 @@ export function PersoenlichesAngebot({ content }: PersoenlichesAngebotProps) {
   );
   
   return (
-    <section className="w-full py-16 lg:py-24 bg-secondary/20">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+    <section className="w-full bg-[var(--wf-neutral-primary)] py-[var(--section-padding-mobile-p)] md:py-[var(--section-padding-tablet)] lg:py-[var(--section-padding)]">
+      <div className="max-w-[1280px] mx-auto px-[var(--container-padding)]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[var(--gap-lg)] items-start">
           <h2>
             {content?.personal_title || "✨ Mein persönliches Angebot – das Besondere bei TaoBasis"}
           </h2>
@@ -42,10 +42,10 @@ export function PersoenlichesAngebot({ content }: PersoenlichesAngebotProps) {
                 </div>
               ))}
             </div>
-            <div className="mt-8">
+            <div className="mt-[var(--space-2x)]">
               <Link
                 to={content?.personal_button_link?.cached_url || "/kontakt"}
-                className="inline-flex items-center justify-center bg-secondary text-secondary-foreground px-7 py-3 rounded-lg text-[15px] hover:bg-secondary/90 transition-colors"
+                className="inline-flex items-center justify-center bg-secondary text-secondary-foreground py-[1em] px-[1.5em] rounded-[var(--radius-button)] text-[1rem] font-normal leading-[1.2] hover:opacity-90 transition-all"
               >
                 {content?.personal_button_text || "Kontakt aufnehmen"}
               </Link>

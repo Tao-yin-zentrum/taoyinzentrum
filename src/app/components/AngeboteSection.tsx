@@ -86,12 +86,12 @@ export function AngeboteSection({ content }: AngeboteSectionProps) {
   const wideCard = cards.find((c) => c.wide);
 
   return (
-    <section id="Angebote" className="w-full py-16 lg:py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-6">
-        <h2 className="mb-10">Meine Angebote für dich</h2>
+    <section id="Angebote" className="w-full bg-[var(--wf-neutral-secondary)] py-[var(--section-padding-mobile-p)] md:py-[var(--section-padding-tablet)] lg:py-[var(--section-padding)]">
+      <div className="max-w-[var(--container-width)] mx-auto px-[var(--container-padding)]">
+        <h2 className="mb-[var(--gap-md)]">Meine Angebote für dich</h2>
 
         {/* 3 small cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-[var(--gap-sm)] mb-[var(--gap-sm)]">
           {smallCards.map((card) => (
             <SmallCard key={card.title} card={card} />
           ))}
@@ -108,7 +108,7 @@ function SmallCard({ card }: { card: PricingCard }) {
   return (
     <div className="flex flex-col">
       {/* Card with border */}
-      <div className="border border-primary/20 rounded-xl p-6 flex flex-col">
+      <div className="shadow-[inset_0_0_0_1px_var(--wf-inverse-a20)] rounded-[var(--radius-card)] p-[var(--card-padding)] flex flex-col">
         {/* Price */}
         <div className="mb-1">
           <span className="text-[2rem] text-primary">{card.price}</span>
@@ -128,13 +128,13 @@ function SmallCard({ card }: { card: PricingCard }) {
         <div className="space-y-2">
           <a
             href={`tel:${card.phone}`}
-            className="block w-full text-center bg-secondary text-secondary-foreground py-3 rounded-lg text-[14px] hover:bg-secondary/90 transition-colors"
+            className="block w-full text-center bg-secondary text-secondary-foreground py-[1em] px-[1.5em] rounded-[var(--radius-button)] text-[1rem] font-normal leading-[1.2] hover:opacity-90 transition-all"
           >
             Anfragen per Telefon
           </a>
           <a
             href={`mailto:${card.email}?subject=Neue%20Anfrage%20Taoyin%20Zentrum`}
-            className="block w-full text-center border border-primary/25 text-foreground py-3 rounded-lg text-[14px] hover:border-primary/40 transition-colors"
+            className="block w-full text-center bg-transparent text-foreground py-[1em] px-[1.5em] rounded-[var(--radius-button)] text-[1rem] font-normal leading-[1.2] shadow-[inset_0_0_0_1px_var(--wf-inverse-a20)] hover:shadow-[inset_0_0_0_1px_var(--wf-inverse-a40)] transition-all"
           >
             Anfragen per Mail
           </a>
@@ -158,8 +158,8 @@ function WideCard({ card }: { card: PricingCard }) {
   return (
     <div className="flex flex-col">
       {/* Card with border */}
-      <div className="border border-primary/20 rounded-xl p-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="shadow-[inset_0_0_0_1px_var(--wf-inverse-a20)] rounded-[var(--radius-card)] p-[var(--card-padding)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--gap-sm)]">
           {/* Left: Price, Title, Description */}
           <div>
             <div className="mb-1">
@@ -176,16 +176,16 @@ function WideCard({ card }: { card: PricingCard }) {
           </div>
 
           {/* Right: Buttons */}
-          <div className="flex items-center justify-end gap-3">
+          <div className="flex items-center justify-end gap-[var(--space-0-5x)]">
             <a
               href={`tel:${card.phone}`}
-              className="inline-flex items-center justify-center bg-secondary text-secondary-foreground px-6 py-3 rounded-lg text-[14px] hover:bg-secondary/90 transition-colors"
+              className="inline-flex items-center justify-center bg-secondary text-secondary-foreground py-[1em] px-[1.5em] rounded-[var(--radius-button)] text-[1rem] font-normal leading-[1.2] hover:opacity-90 transition-all"
             >
               Anfragen per Telefon
             </a>
             <a
               href={`mailto:${card.email}?subject=Neue%20Anfrage%20Taoyin%20Zentrum`}
-              className="inline-flex items-center justify-center border border-primary/25 text-foreground px-6 py-3 rounded-lg text-[14px] hover:border-primary/40 transition-colors"
+              className="inline-flex items-center justify-center bg-transparent text-foreground py-[1em] px-[1.5em] rounded-[var(--radius-button)] text-[1rem] font-normal leading-[1.2] shadow-[inset_0_0_0_1px_var(--wf-inverse-a20)] hover:shadow-[inset_0_0_0_1px_var(--wf-inverse-a40)] transition-all"
             >
               Anfragen per Mail
             </a>

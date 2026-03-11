@@ -26,7 +26,7 @@ export function SEO({
   image = DEFAULT_IMAGE,
   url,
   type = 'website',
-  author = 'Magdalena Johanna',
+  author = 'Estela Fuchs',
   locale = 'de_DE',
   publishedTime,
   modifiedTime,

@@ -24,23 +24,23 @@ function InstagramIcon() {
 
 export function Footer() {
   return (
-    <footer className="w-full bg-[#0f2a3a] text-white">
-      <div className="max-w-7xl mx-auto px-6 py-16">
+    <footer className="w-full bg-primary text-primary-foreground">
+      <div className="max-w-[1280px] mx-auto px-[var(--container-padding)] py-[var(--section-padding-mobile-p)] md:py-[var(--section-padding-tablet)] lg:py-[var(--section-padding)]">
         {/* Top: Heading + Emails */}
-        <div className="mb-12">
-          <h2 className="text-white text-[2rem] mb-4">
+        <div className="mb-[var(--gap-lg)]">
+          <h2 className="text-primary-foreground">
             In deine Mitte finden
           </h2>
           <a
             href="mailto:info@taoyin-zentrum.de?subject=Neue%20Anfrage%20Taoyin%20Zentrum"
-            className="block text-[1.5rem] text-white/70 hover:text-white transition-colors mb-1"
+            className="block text-[var(--text-xl-size)] text-current/70 hover:text-current transition-colors mb-1"
             style={{ fontFamily: "'Petrona', Georgia, serif", fontStyle: "italic" }}
           >
             info@taoyin-zentrum.de
           </a>
           <a
             href="mailto:info@estela-fuchs.com?subject=Neue%20Therapieanfrage"
-            className="block text-[1.5rem] text-white/70 hover:text-white transition-colors"
+            className="block text-[var(--text-xl-size)] text-current/70 hover:text-current transition-colors"
             style={{ fontFamily: "'Petrona', Georgia, serif", fontStyle: "italic" }}
           >
             info@estela-fuchs.com
@@ -48,13 +48,13 @@ export function Footer() {
         </div>
 
         {/* Middle: Description + Links */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-12">
-          <p className="text-white/50 text-[16px] leading-relaxed">
-            Raum für Achtsamkeit & Balance
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[var(--gap-lg)] mb-[var(--gap-lg)]">
+          <p className="text-current/50 text-[1rem] leading-relaxed">
+            Raum f&uuml;r Achtsamkeit & Balance
           </p>
-          <div className="grid grid-cols-2 gap-8">
+          <div className="grid grid-cols-2 gap-[var(--gap-lg)]">
             <div>
-              <h3 className="text-[13px] tracking-[0.1em] uppercase text-white/40 mb-4">
+              <h3 className="text-[var(--eyebrow-size)] tracking-[0.1em] uppercase text-current/40 mb-[var(--space-1x)]">
                 Angebote
               </h3>
               <ul className="space-y-2.5">
@@ -62,7 +62,7 @@ export function Footer() {
                   <li key={link.href}>
                     <Link
                       to={link.href}
-                      className="text-[15px] text-white/60 hover:text-white transition-colors"
+                      className="text-[1rem] text-current/60 hover:text-current transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -71,7 +71,7 @@ export function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="text-[13px] tracking-[0.1em] uppercase text-white/40 mb-4">
+              <h3 className="text-[var(--eyebrow-size)] tracking-[0.1em] uppercase text-current/40 mb-[var(--space-1x)]">
                 Service
               </h3>
               <ul className="space-y-2.5">
@@ -79,7 +79,7 @@ export function Footer() {
                   <li key={link.href}>
                     <Link
                       to={link.href}
-                      className="text-[15px] text-white/60 hover:text-white transition-colors"
+                      className="text-[1rem] text-current/60 hover:text-current transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -91,7 +91,7 @@ export function Footer() {
         </div>
 
         {/* Bottom: Logo + Social */}
-        <div className="border-t border-white/10 pt-8 flex items-center justify-between">
+        <div className="border-t border-current/10 pt-[var(--space-2x)] flex items-center justify-between">
           <Link to="/">
             <img
               src="https://cdn.prod.website-files.com/6890d61524a7dba397203fde/6890d8b72344be05aef5a64a_tao_logo_white.png"
@@ -104,7 +104,7 @@ export function Footer() {
             href="https://www.instagram.com/taoyin_zentrum/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white/50 hover:text-white transition-colors"
+            className="text-current/50 hover:text-current transition-colors"
             aria-label="Instagram"
           >
             <InstagramIcon />
